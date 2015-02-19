@@ -17,44 +17,48 @@ The data is without units as it is provided normalized by the authors.
 ## Data Transformation
 
 In order to transform the partitioned and separate data into a tidy data set, the following was performed.
+
 1. Merge train and test data into one merged data set
-* Train data was column binded with subject id & activity id & whole feature measurements from the train data
-* Test data was similarly column binded subject id & activity id & whole feature measurements from the test data
-* The merged data is a row bind of the train data & test data
+ * Train data was column binded with subject id & activity id & whole feature measurements from the train data
+ * Test data was similarly column binded subject id & activity id & whole feature measurements from the test data
+ * The merged data is a row bind of the train data & test data
+
 2. Extract (keep) only the measurements (features) with mean or standard deviation
-* Select the columns containing either the keyword mean or std
-* Filtered data is the subset of the merged data with the selected columns
+ * Select the columns containing either the keyword mean or std
+ * Filtered data is the subset of the merged data with the selected columns
+
 3. Obtain the activity names and place them into the data set
-* Generate a vector of activity labels, which is a match of the activity id on merged data with the activity label corresponding to the activity id.
-* Insert the activity label onto the filtered data set
+ * Generate a vector of activity labels, which is a match of the activity id on merged data with the activity label corresponding to the activity id.
+ * Insert the activity label onto the filtered data set
+
 4. Appropriately label the data set with descriptive variable names (column names)
-* Take the filtered column names (features) and since they are abbreviations, to make human readable, a substitution of string patterns is used:
+ * Take the filtered column names (features) and since they are abbreviations, to make human readable, a substitution of string patterns is used:
 
->patterns
+ ><table>
+  <tr><td>"^t" -> "TD-"</td></tr>
+  <tr><td>"^f" -> "FD-"</td></tr>
+  <tr><td>"mean\\(\\)" -> "Mean"</td></tr>
+  <tr><td>"std\\(\\)" -> "Std"</td></tr>
+  <tr><td>"meanFreq\\(\\)" -> "MeanFreq"</td></tr>
+  <tr><td>"AccJerk" -> "LinearJerk"</td></tr>
+  <tr><td>"GyroJerk" -> "AngularAcceleration"</td></tr>
+  <tr><td>"AccMag" -> "LinearAccelerationMagnitude"</td></tr>
+  <tr><td>"GyroMag" -> "AngularVelocityMagnitude"</td></tr>
+  <tr><td>"Acc-" -> "LinearAcceleration-"</td></tr>
+  <tr><td>"Gyro-" -> "AngularVelocity-"</td></tr>
+  <tr><td>"Mag-" -> "Magnitude-"</td></tr>
+  <tr><td>"BodyBody" -> "Body"</td></tr>
+  <tr><td>"Body" -> "Body-"</td></tr>
+  <tr><td>"Gravity" -> "Gravity-"</td></tr>
+  </table>
 
-"^t" -> "TD-"
-"^f" -> "FD-"
-"mean\\(\\)" -> "Mean"
-"std\\(\\)" -> "Std"
-"meanFreq\\(\\)" -> "MeanFreq"
-"AccJerk" -> "LinearJerk"
-"GyroJerk" -> "AngularAcceleration"
-"AccMag" -> "LinearAccelerationMagnitude"
-"GyroMag" -> "AngularVelocityMagnitude"
-"Acc-" -> "LinearAcceleration-"
-"Gyro-" -> "AngularVelocity-"
-"Mag-" -> "Magnitude-"
-"BodyBody" -> "Body"
-"Body" -> "Body-"
-"Gravity" -> "Gravity-"
-
-Where some abbreviations are replaced with their full name or their correspondence (AccJerk is Linear Jerk, GyroJerk is Angular Acceleration, etc). TD and FD represent Time-Domain and Frequency-Domain, respectively.
+ Where some abbreviations are replaced with their full name or their correspondence (AccJerk is Linear Jerk, GyroJerk is Angular Acceleration, etc). TD and FD represent Time-Domain and Frequency-Domain, respectively.
   >Description based on: https://www.elen.ucl.ac.be/Proceedings/esann/esannpdf/es2013-84.pdf
 
 5. From the data set in step 4, create a second, independent tidy data set with the average of each variable for each activity and each subject.
-* The completed data set of step 4 is melted into the id variables and measure variables to have them in unique id-variable combinations
-* The shape of the melted data is then described (dcast), based on subject and activity as identifiers, and aggregating afterwards with mean.
-* The resulting data set is then exported to a text file and for those who desire a xls file.
+ * The completed data set of step 4 is melted into the id variables and measure variables to have them in unique id-variable combinations
+ * The shape of the melted data is then described (dcast), based on subject and activity as identifiers, and aggregating afterwards with mean.
+ * The resulting data set is then exported to a text file and for those who desire a xls file.
 
 ## Output data
 
