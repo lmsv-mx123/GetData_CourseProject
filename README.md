@@ -49,7 +49,7 @@ The main folder UCI HAR Dataset contains:
   <td>0</td>
   </tr>
   <tr>
-  <td>Body Acceleration Magnitude</td>
+  <td>Body Linear Acceleration Magnitude</td>
   <td>1</td>
   <td>1</td>
   </tr>
