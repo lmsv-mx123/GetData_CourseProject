@@ -176,13 +176,13 @@ The main folder UCI HAR Dataset contains:
 
  * Output files not uploaded into the repository.
 
-## Runing the script
+## Running the script
 
 * Download the script to the home directory ("~/")
 
 * Execute the following commands (required libraries and the zipped data file are automatically used and if not present, are downloaded and extracted/installed)
 
-  * Curl must be properly set-up in file system when using the script to also fetch zipped data file into working directory, otherwise download and extract the zipped file externally into working directory.
+  * Curl must be properly set-up in file system when using the script to also fetch zipped data file into working directory, otherwise download and extract the zipped file externally into working directory ("~/").
 
 ```
 source("run_analysis.R")
