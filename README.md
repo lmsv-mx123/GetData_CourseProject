@@ -3,18 +3,21 @@
 ## The raw data files
 The main folder UCI HAR Dataset contains:
   
-  1. a train data folder of
-* X\_train.txt: Train feature data set, consisting of 561 measurements/features from accelerometer and gyroscope
-* y\_train.txt: Train activity data set (identified by activity\_id)
-* subject\_train.txt: Subject train data set (identified by subject\_id)
+1. a train data folder of
+ * X\_train.txt: Train feature data set, consisting of 561 measurements/features from accelerometer and gyroscope
+ * y\_train.txt: Train activity data set (identified by activity\_id)
+ * subject\_train.txt: Subject train data set (identified by subject\_id)
+
 2. a test data folder of
-* X\_test.txt: Test feature data set, consisting of 561 measurements/features from accelerometer and gyroscope
-* y\_test.txt: Test activity data set (identified by activity\_id)
-* subject\_test.txt: Subject test data set (identified by subject\_id)
+ * X\_test.txt: Test feature data set, consisting of 561 measurements/features from accelerometer and gyroscope
+ * y\_test.txt: Test activity data set (identified by activity\_id)
+ * subject\_test.txt: Subject test data set (identified by subject\_id)
+
 3. activity\_labels.txt: Data set with the Activity\_id and Activity\_Label relationship (WALKING, WALKING\_UPSTAIRS, WALKING\_DOWNSTAIRS, SITTING, STANDING, LAYING)
+
 4. features.txt: All of the features obtained, namely a multiplication of
 
-<table>
+ ><table>
   <tr>
   <th>Name</th>
   <th>Time</th>
@@ -74,7 +77,7 @@ The main folder UCI HAR Dataset contains:
   
   with
 
-<table>
+ ><table>
   <tr>
   <th>Function</th>
   <th>Description</th>
@@ -151,9 +154,9 @@ The main folder UCI HAR Dataset contains:
   
   >Description of function from: https://www.elen.ucl.ac.be/Proceedings/esann/esannpdf/es2013-84.pdf
 
-* features\_info.txt: A description of the base feature list
+5. features\_info.txt: A description of the base feature list
 
-* README.txt: a general readme file
+6. README.txt: a general readme file
 
 ## Procedure for tidying up data
 
@@ -171,7 +174,7 @@ The main folder UCI HAR Dataset contains:
 4. tidy\_data.txt: Tidy data set file, output as a txt file.
 5. tidy\_data.xls: Tidy data set file, output as xls file for those who see easier data in xls files :)
 
-  >Output files not uploaded into the repository.
+ * Output files not uploaded into the repository.
 
 ## Runing the script
 
@@ -179,19 +182,21 @@ The main folder UCI HAR Dataset contains:
 
 * Execute the following commands (required libraries and the zipped data file are automatically used and if not present, are downloaded and extracted/installed)
 
->code
+  * Curl must be properly set-up in file system when using the script to also fetch zipped data file into working directory, otherwise download and extract the zipped file externally into working directory.
 
+```
 source("run_analysis.R")
 run_analysis()
+```
 
 ## Viewing the text file in R
 
 * To view the text file in a readable way, issue
 
->code
-
+```
 tidydata <- read.table("tidy_data.txt", header = TRUE) #tidy_data.txt must be in current working directory!
 View(tidydata)
+```
 
 ## For further information
 Read CodeBook.md for a description of the transformations used as well as the variables and data.
